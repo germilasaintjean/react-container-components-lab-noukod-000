@@ -13,33 +13,33 @@ class SearchableMovieReviewsContainer extends React.Component {
       reviews: [],
       searchTerm: ""
     }
-  
+
     handleChange = event => {
     const temp = event
       this.setState({
         [event.target.name]: event.target.value
       })
     }
-  
+
     handleSubmit = event => {
       event.preventDefault()
       const term = this.state.searchTerm
-  
+
       const newURL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=' + term + `&api-key=f98593a095b44546bf4073744b540da0`;
-  
+
       fetch(newURL)
         .then(response => response.json())
         .then(data => {
           const temp2 = data.results
-          
+
           this.setState({
             reviews: temp2
           })
         })
-  
-      
+
+
     }
-  
+
     render() {
     return <div className="searchable-movie-reviews">
       <MovieReviews reviews={this.state.reviews} />
@@ -55,8 +55,8 @@ class SearchableMovieReviewsContainer extends React.Component {
     </form>
     </div>;
   }
-  
+
   }
-  
-  
+
+
   export default SearchableMovieReviewsContainer
