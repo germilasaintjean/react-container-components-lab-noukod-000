@@ -35,7 +35,7 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
         reviews: temp2
       })
   })
-  
+
 }
 
 render () {
@@ -50,7 +50,7 @@ render () {
         <div>
      </form>
      </div>;
-  
+
    }
 
 }
