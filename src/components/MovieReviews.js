@@ -1,5 +1,5 @@
 // Code MovieReviews Here
-import React from 'react'
+import React, { Component } from 'react'
 
 const Review = ({ title, summary }) => (
   <div className="review">
