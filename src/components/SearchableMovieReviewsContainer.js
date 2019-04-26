@@ -7,24 +7,50 @@ const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/all.json?'
             + `api-key=${NYT_API_KEY}`;
 
 // Code SearchableMovieReviewsContainer Here
-export default class SearchableMovieReviewsContainer extends React.Component {
-  constructor(props) {
-    supre(props);
-
-    this.state = {
-      search: []
+ class SearchableMovieReviewsContainer extends React.Component {
+   state = {
+     reviews: [],
+      searchTerm: ""
     }
-  }
 
-  componentDidMount() {
-    fetch('https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=<search-term>')
+    handleChange = event => {
+      const temp = event
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
+
+   handle Submit = event => {
+     event.preventDefault()
+     const term = this.state.search-term
+
+     const newURL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=' + term + `&api-key=f98593a095b44546bf4073744b540da0`;
+
+     fetch(newURL)
     .then(response => response.json())
-    .then(search => this.setState({ search }))
-  }
+    .then(data => {
+      const temp2 = data.results
+
+      this.setState({
+        reviews: temp2
+      })
+  })
+  
 }
 
-render search = () =>  {
-  return  this.state.books.map(search =>)
+render () {
+  return  <div className="searchable-movie-reviews">
+<MovieReviews reviews={this.state.reviews} />
+<form onSubmit={event => this.handleSubmit(event)}>
+    <div>
+      <label>
+         Search term
+         <input id="searchTerm" name"searchTerm" type="text" value={this.state.searchTerm} onChange={this.handleChange} />
+        </label>
+        <div>
+     </form>
+     </div>;
+  
+   }
 
-  )
 }
