@@ -1,6 +1,7 @@
 // Code MovieReviews Here
 import React, { Component } from 'react'
 
+class MovieReviews extends Component {
 const Review = ({ title, summary }) => (
   <div className="review">
     <h3>{ title }</h3>
@@ -19,6 +20,6 @@ const MovieReviews = ({reviews}) => (
   </div>
 )
 
-
+}
 
 export default MovieReviews
